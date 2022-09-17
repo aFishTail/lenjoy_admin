@@ -6,17 +6,16 @@ import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 // import { topicEditorContent } from '@/../pages/topic/editor/context'
 import { Editor } from 'react-draft-wysiwyg';
+import { FileControllerCoverImport } from '@/services/swagger/FileControllerCoverImport';
 
-const uploadImageCallBack = async (file) => {
-  // const imgData = await apiClient.uploadInlineImageForArticle(file);
-  // return Promise.resolve({ data: {
-  //   link: `${process.env.NEXT_PUBLIC_API_URL}${imgData[0].formats.small.url}`
-  // }});
-  console.log('upload image', file);
-  return {
-    data: { link: 'test.url' },
-  };
-};
+const uploadImageCallBack = async (file: any)=>{
+      const formData = new FormData()
+      formData.append('file', file)
+      const {data} = await FileControllerCoverImport(formData)
+      console.log('上传图片', data,{data: {link: data.url}})
+      return {data: {link: data.url}}
+}
+
 
 interface Props {
   value?: string;

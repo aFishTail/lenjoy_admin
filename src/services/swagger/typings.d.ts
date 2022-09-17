@@ -151,9 +151,9 @@ declare namespace API {
 
   type QueryCategoryListInputDto = {
     /** 分类名称 */
-    name?: string;
-    startTime?: string;
-    endTime?: string;
+    name: string;
+    startTime: string;
+    endTime: string;
   };
 
   type CreateCategoryDto = {
@@ -310,6 +310,10 @@ declare namespace API {
   type CreateUserSignDto = {};
 
   type UpdateUserSignDto = {};
+
+  type UploadArticleImageInputDto = {
+    file: Record<string, any>;
+  };
 
   type UserFavoriteOperateDto = {
     /** 实体类型 */

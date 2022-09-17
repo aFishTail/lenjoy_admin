@@ -19,7 +19,7 @@ export async function AdminCategoryControllerCreate(
 
 /** 查询列表 POST /api/admin/category/list */
 export async function AdminCategoryControllerFindAll(
-  body?: API.QueryCategoryListInputDto,
+  body: API.QueryCategoryListInputDto,
   options?: { [key: string]: any },
 ) {
   return request<API.QueryCategoryListOutDto>('/api/admin/category/list', {

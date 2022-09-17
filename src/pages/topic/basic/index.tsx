@@ -2,14 +2,17 @@ import { PageContainer } from '@ant-design/pro-layout';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import { TableDropdown } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
-import { Button, Modal, Spin, Table } from 'antd';
-import { Key, useEffect, useRef, useState } from 'react';
+import { Button, Spin } from 'antd';
+import {  useRef, useState } from 'react';
 import type { RecordKey } from '@ant-design/pro-utils/lib/useEditableArray';
-import { TopicControllerFindAll, TopicControllerUpdate } from '@/services/swagger/tieziguanli';
+import { TopicControllerFindAll } from '@/services/swagger/tieziguanli';
 import { Link } from 'umi';
-import { AdminTopicControllerUpdate } from '@/services/swagger/guanlipingtaitieziguanli';
+import {  AdminTopicControllerRemove, AdminTopicControllerUpdate } from '@/services/swagger/guanlipingtaitieziguanli';
 export default function Resource() {
   const [loading, setLoading] = useState<boolean>(true);
+
+  const actionRef = useRef<ActionType>();
+
   const columns: ProColumns<API.Topic>[] = [
     {
       dataIndex: 'index',
@@ -32,7 +35,7 @@ export default function Resource() {
       },
     },
     {
-      title: '备注',
+      title: '摘要',
       dataIndex: 'summary',
       ellipsis: true,
       copyable: true,
@@ -72,9 +75,18 @@ export default function Resource() {
         >
           编辑
         </a>,
+        <a
+          key="editable"
+          onClick={async () => {
+            await AdminTopicControllerRemove({id: record.id})
+            actionRef.current?.reload()
+          }}
+        >
+          删除
+        </a>,
         <TableDropdown
           key="actionGroup"
-          onSelect={() => action?.reload()}
+          onSelect={(key) => console.log('select key:', key)}
           menus={[
             { key: 'copy', name: '复制' },
             { key: 'delete', name: '删除' },
@@ -83,7 +95,7 @@ export default function Resource() {
       ],
     },
   ];
-  const actionRef = useRef<ActionType>();
+
   const handleSave = async (key: RecordKey, row: API.Topic) => {
     console.log('保存：', key, row);
     const { id, title, content } = row;
