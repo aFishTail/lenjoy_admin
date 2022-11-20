@@ -1,57 +1,8 @@
-# Ant Design Pro
+## 简介
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+该项目是采用 React、[AntdPro](https://pro.ant.design/zh-CN/)快速构建的社区论坛后台管理平台，演示地址：http://81.69.252.155:8000, 论坛地址：http://81.69.252.155:6060
 
-## Environment Prepare
+### 相关仓库
 
-Install `node_modules`:
-
-```bash
-npm install
-```
-
-or
-
-```bash
-yarn
-```
-
-## Provided Scripts
-
-Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
-
-Scripts provided in `package.json`. It's safe to modify or add additional script:
-
-### Start project
-
-```bash
-npm start
-```
-
-### Build project
-
-```bash
-npm run build
-```
-
-### Check code style
-
-```bash
-npm run lint
-```
-
-You can also use script to auto fix some lint error:
-
-```bash
-npm run lint:fix
-```
-
-### Test code
-
-```bash
-npm test
-```
-
-## More
-
-You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
+- 后端仓库：[https://github.com/aFishTail/lenjoy_server](https://github.com/aFishTail/lenjoy_server)
+- 论坛：[https://github.com/aFishTail/lenjoy_client](https://github.com/aFishTail/lenjoy_client)
