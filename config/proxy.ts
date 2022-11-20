@@ -9,9 +9,9 @@
 export default {
   dev: {
     '/api': {
-      target: 'http://127.0.0.1:3000/',
+      target: 'http://81.69.252.155:6060/api',
       changeOrigin: true,
-      // pathRewrite: { '^/api': '' },
+      pathRewrite: { '^/api': '' },
     },
   },
   test: {
