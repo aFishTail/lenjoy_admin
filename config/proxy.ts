@@ -23,9 +23,9 @@ export default {
   },
   pre: {
     '/api/': {
-      target: 'your pre url',
+      target: 'http://81.69.252.155:6060/api',
       changeOrigin: true,
-      // pathRewrite: { '^': '' },
+      pathRewrite: { '^': '' },
     },
   },
 };
